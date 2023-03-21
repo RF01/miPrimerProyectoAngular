@@ -4,36 +4,39 @@
 <h5>{{configuracion.descripcion}}</h5> -->
 
 <h1>Lista de Zapatillas disponibles</h1>
-<!-- <ul>
+<ul>
     <li>{{zapatillas[0].marca}}</li>
     <li>{{zapatillas[1].marca}}</li>
     <li>{{zapatillas[2].marca}}</li>
-</ul> -->
-
+</ul>
+<br>
+<hr>
 <!-- DIRECTIVA ngIf -->
-<!-- <ul>
-    <li *ngIf="zapatillas[0].precio<= 80">{{zapatillas[0].marca}} -Oferta!</li>
+<ul>
+    <li *ngIf="zapatillas[0].precio <= 80"> {{zapatillas[0].marca}} -Oferta!</li>
     <li>{{zapatillas[1].marca}}
         <span>{{zapatillas[1].precio <= 80 ? 'Oferta' : 'No Oferta' }}</span>
     </li>
     <li>{{zapatillas[2].marca}}</li>
-</ul> -->
+</ul>
 
-
+<br>
+<hr>
 <!-- DIRECTIVA ngfor -->
-<!-- <ul>
-    <li *ngFor="let z of zapatillas">{{z.marca}}
+<ul>
+    <li *ngFor="let z of zapatillas">{{z.marca}}>
         <strong> - {{z.precio}} €</strong>
         <strong *ngIf="z.precio <= 80 "> OFERTA</strong>
     </li>
     <li *ngFor="let z of zapatillas">{{z.precio}}
 
     </li>
-</ul> -->
+</ul>
 
-
+<br>
+<hr>
 <!-- DIRECTIVA ngSwitch -->
-<!-- <p>El color predominante es: </p>
+<p>El color predominante es: </p>
 <ul [ngSwitch]="this.color">
     <li *ngSwitchCase=" 'red' ">
         <span [ngStyle]="{'background':color}">Rojo</span>
@@ -45,7 +48,7 @@
         <span [ngStyle]="{'background':color}">Negro</span>
     </li>
     
-</ul> -->
+</ul>
 
 <!-- EVENTOS 
  2.5. Eventos
@@ -60,9 +63,44 @@ con los Eventos en Angular, mostraremos
 -->
 
 <!-- EVENTO CLICK -->
-<!-- <ul>
+<ul>
     <li *ngFor="let z of zapatillas; let indice = index">
         {{ indice + ' - ' + z.marca}}
+        <button (click)="borrarMarca(indice)">Borrar</button>
+        <strong> - {{z.precio}} €</strong>
+        <strong *ngIf="z.precio >= 80 "> OFERTA</strong>
+    </li>
+    <li *ngFor="let z of zapatillas">{{z.precio}}
+
+    </li>
+</ul>
+
+<br>
+<hr>
+<!-- EVENTO Blur -->
+<p>evento Blur</p>
+<ul>
+    <li *ngFor="let z of zapatillas; let indice = index"> 
+        {{ indice + ' - ' + z.marca}} 
+        <button (click)="borrarMarca(indice)">Borrar</button>
+        <strong> - {{z.precio}} €</strong>
+        <strong *ngIf="z.precio <= 80 "> OFERTA</strong>
+   </li>
+    <li *ngFor="let z of zapatillas">{{z.precio}}
+
+   </li>
+</ul>
+<br>
+<hr>
+<p>evento onBlur</p>
+<input type="text" (blur)="onBlur()"/>
+
+<br>
+<hr>
+<!-- EVENTO keyUp -->
+<ul>
+    <li *ngFor="let z of zapatillas; let indice = index">
+        {{ indice + ' - ' + z.marca}} 
         <button (click)="borrarMarca(indice)">Borrar</button>
         <strong> - {{z.precio}} €</strong>
         <strong *ngIf="z.precio <= 80 "> OFERTA</strong>
@@ -70,55 +108,28 @@ con los Eventos en Angular, mostraremos
     <li *ngFor="let z of zapatillas">{{z.precio}}
 
     </li>
-</ul> -->
-
-<!-- EVENTO Blur -->
-<ul>
-    <!-- <li *ngFor="let z of zapatillas; let indice = index"> -->
-        <!-- {{ indice + ' - ' + z.marca}} -->
-        <!-- <button (click)="borrarMarca(indice)">Borrar</button> -->
-        <!-- <strong> - {{z.precio}} €</strong>
-        <strong *ngIf="z.precio <= 80 "> OFERTA</strong> -->
-    <!-- </li> -->
-    <!-- <li *ngFor="let z of zapatillas">{{z.precio}} -->
-
-    <!-- </li> -->
 </ul>
-<!-- <p>evento onBlur</p>
-<input type="text" (blur)="onBlur()"/> -->
+<p>evento keyUp</p>
+<input type="text" (keyup)="keyUp()"/>
 
-
+<br>
+<hr>
 <!-- EVENTO keyUp -->
-<ul>
-    <!-- <li *ngFor="let z of zapatillas; let indice = index"> -->
-        <!-- {{ indice + ' - ' + z.marca}} -->
-        <!-- <button (click)="borrarMarca(indice)">Borrar</button> -->
-        <!-- <strong> - {{z.precio}} €</strong>
-        <strong *ngIf="z.precio <= 80 "> OFERTA</strong> -->
-    <!-- </li> -->
-    <!-- <li *ngFor="let z of zapatillas">{{z.precio}} -->
+<p>evento keyUp.enter</p>
+<input type="text" (keyup.enter)="keyUpEnter()"/>
 
-    <!-- </li> -->
-</ul>
-<!-- <p>evento keyUp</p>
-<input type="text" (keyup)="keyUp()"/> -->
-
-
-<!-- EVENTO keyUp -->
-<!-- <p>evento keyUp.enter</p>
-<input type="text" (keyup.enter)="keyUpEnter()"/> -->
-
-
+<br>
+<hr>
 <!-- DATA BINDING VINCULACION DE DATOS - TWO-WAY BINDING -->
-
+<p>DATA BINDING VINCULACION DE DATOS - TWO-WAY BINDING</p>
 <input type="text" [(ngModel)]="this.miMarca">
 <button (click)="getMarca()">Añadir</button>
 <ul>
     <li *ngFor="let z of zapatillas; let indice=index">{{z.marca}}
         <strong>  {{indice +' - ' +z.marca}} </strong>
-        <!-- <strong *ngIf="z.precio <= 80 "> OFERTA</strong> -->
+        <strong *ngIf="z.precio <= 80 "> OFERTA</strong>
     </li>
-    <!-- <li *ngFor="let z of zapatillas">{{z.precio}}
+    <li *ngFor="let z of zapatillas">{{z.precio}}
 
-    </li> -->
+    </li>
 </ul>
